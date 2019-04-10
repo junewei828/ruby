@@ -101,12 +101,12 @@ end
 
 def subsets(array)
     return [array] if array.empty?
-    subs_with_one_less_ele = subsets(array[1..-1])
-    all_subs = []
-    subs_with_one_less_ele.each do |sub|
-        all_subs << [array.first] + sub
+    subs_without_first = subsets(array[1..-1])
+    subs_with_first = []
+    subs_without_first.each do |sub|
+        subs_with_first << [array.first] + sub
     end
-    all_subs + subs_with_one_less_ele
+    subs_with_first + subs_without_first
 end
 
 p subsets([1, 2, 3])
