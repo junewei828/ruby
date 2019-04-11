@@ -16,7 +16,7 @@ class PolyTreeNode
         end
 
         @parent = parent_node
-        parent_node.children << self unless parent_node.nil? || parent_node.children.include?(self)
+        @parent.children << self unless @parent.nil? || @parent.children.include?(self)
     end
 
     def add_child(child_node)
@@ -33,7 +33,7 @@ class PolyTreeNode
 
         return self if prc.call(self)
 
-        children.each do |child|
+        self.children.each do |child|
         result = child.dfs(&prc)
         return result unless result.nil?
         end
