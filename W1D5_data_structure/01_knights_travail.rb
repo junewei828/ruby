@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require "PolyTreeNode"
 
 class KnightPathFinder
@@ -89,6 +90,8 @@ if $PROGRAM_NAME == __FILE__
 end
 
 
+=======
+>>>>>>> 882ce61fe570fb6a987b4979e1695a9e1bdb9d9a
 class PolyTreeNode
     attr_reader :value, :children, :parent
 
@@ -115,6 +118,7 @@ class PolyTreeNode
 
     def remove_child(child_node)
         raise "this child does not exist" unless self.children.include?(child_node)
+<<<<<<< HEAD
     end
 
     def dfs(target)
@@ -136,4 +140,9 @@ class PolyTreeNode
         end
         nil
     end
+=======
+        self.children.delete(child_node)
+    end
+
+>>>>>>> 882ce61fe570fb6a987b4979e1695a9e1bdb9d9a
 end
