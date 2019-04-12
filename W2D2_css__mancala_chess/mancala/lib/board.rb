@@ -41,11 +41,18 @@ class Board
     end
 
     render
-    next_turn
+    next_turn(cup_index)
   end
 
   def next_turn(ending_cup_idx)
     # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
+    if ending_cup_idx == 6 || ending_cup_idx == 13
+      :prompt
+    elsif @cups[ending_cup_idx].count == 1
+      :switch
+    else
+    ending_cup_idx
+    end
   end
 
   def render
@@ -57,8 +64,17 @@ class Board
   end
 
   def one_side_empty?
+    @cups.take(6).all? {|cup| cup.empty?} || @cups[7..12].all? {|cup| cup.empty?}
   end
 
   def winner
+    player1_count = @cups[6].length
+    player2_count = @cups[13].length
+    
+    if player1_count == player2_count
+      :draw
+    else
+      player1_count > player2_count ? @name1 : @name2
+    end
   end
 end
