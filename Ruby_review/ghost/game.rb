@@ -111,7 +111,7 @@ class Game
     end
 
     def display_standings
-        system("clear")
+        # system("clear")
         puts "Current standings: "
 
         players.each do |player|
