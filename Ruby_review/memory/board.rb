@@ -1,66 +1,63 @@
 require_relative "card"
 
 class Board
+    attr_reader :size, :grid
+
     def initialize(size = 4)
-        @grid = Array.new(size) { Array.new(4)}
+        @grid = Array.new(size) {Array.new(size)}
         @size = size
         populate
     end
 
-    def populate 
-        @Card.new
+    def [](pos)
+        i,j = pos
+        @grid[i][j]
     end
 
-    def [](position)
-        row,col = position
-        @grid[row][col]
+    def []= (pos,value)
+        i,j = pos
+        @grid[i][j]= value
     end
 
-    def []=(position,value)
-        row,col = position
-        @grid[row][col] = value
-    end
-
-    def hide(position)
-        self[position].hide
-    end
-
-    def reveal(position)
-        if revealed?(position)
-            puts "You can't flip a card that has already been flipped"
-        else
-            @grid[position].reveal
+    def render
+        system("clear")
+        puts "  #{(0...size).to_a.join(" ")}"
+        @grid.each_with_index do |row,i|
+            puts "#{i} #{row.join(" ")}"
         end
-        self[position].value
-    end
+    end 
 
     def populate
-        num_pairs = (size ** 2) / 2
-        cards = Card.shuffled_pairs(num_pairs)
-        rows.each_index do |i|
-            rows[i].each_index do |j|
-                self[i][j] = cards.populate
+        num = size * size / 2
+        cards = Card.shuffled_cards(num)
+
+        @grid.each_index do |i|
+            @grid[i].each_index do |j|
+                @grid[i][j]= cards.pop
             end
         end
     end
 
-    def render 
-        puts "#{(0..size).to_a.join(" ")}"
-        rows.each_with_index do |row,i|
-            puts "#{i} #{row.join(" ")}" 
-        end
-    end
-
-    def revealed(pos)
-        self[pos].revealed?
-    end
-
     def won?
-        rows.each do |row|
+        @grid.all? do |row|
             row.all?(&:revealed?)
         end
     end
 
-    private
-    attr_reader :rows
+    def reveal(pos)
+        if revealed?(pos)
+            puts "can't flip a card that is revealed"
+        else 
+            self[pos].reveal
+        end
+        self[pos].value
+    end
+
+    def revealed?(pos)
+        self[pos].revealed?
+    end
+
+    def hide(pos)
+        self[pos].hide
+    end
 end
