@@ -124,7 +124,7 @@ class Game
     def update_standings
         system("clear")
         puts "#{previous_player} spelled #{fragment}."
-        puts "#{previous_player} gets a letter!"
+        puts "#{previous_player} gets a word!"
 
         losses[previous_player] += 1
 
