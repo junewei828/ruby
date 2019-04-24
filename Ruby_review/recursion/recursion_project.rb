@@ -89,4 +89,60 @@ class Array
     end
 end
 
-p [2,4,6,8,9].bsearch(6)
+# p [2,4,6,8,9].bsearch(6)
+
+class Array
+    def merge_sort
+        return self if self.length <= 1
+        mid = self.length / 2
+        left = self.take(mid).merge_sort
+        right = self.drop(mid).merge_sort
+        Array.merge(left, right)
+    end
+
+    def self.merge(left,right)
+        merged = []
+        until left.empty? || right.empty?
+            if left.first < right.first
+                merged << left.shift
+            else
+                merged << right.shift
+            end
+        end
+        merged.concat(left)
+        merged.concat(right)
+        merged
+    end
+end
+
+# p [3,2,5,4,1].merge_sort
+
+class Array
+    def subsets
+        return [self] if self.empty?
+        subs = self[0...-1].subsets
+        arr = []
+        subs.each do |sub|
+            arr << [self.last] + sub
+        end
+        subs + arr
+    end
+end
+
+# p [1,2,3].subsets
+
+def permutations(array)
+    return [array] if array.length <= 1
+    first = array.shift
+    perms = permutations(array)
+    total_perms = []
+
+    perms.each do |perm|
+        (0..perm.length).each do |i|
+            total_perms << perm[0...i] + [first] + perm[i..-1]
+        end
+    end
+    total_perms
+end
+
+p permutations([1,2,3])
