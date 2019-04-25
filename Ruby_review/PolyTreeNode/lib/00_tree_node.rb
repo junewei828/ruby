@@ -25,7 +25,10 @@ class PolyTreeNode
         child_node.parent = nil
     end
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 3c1481f4fe00677ca2a09a32d8f88e2d637a71f1
 # end
 
 # class Searchable
@@ -38,6 +41,9 @@ class PolyTreeNode
     #     end
     #     nil
     # end
+<<<<<<< HEAD
+>>>>>>> 3c1481f4fe00677ca2a09a32d8f88e2d637a71f1
+=======
 >>>>>>> 3c1481f4fe00677ca2a09a32d8f88e2d637a71f1
 
     def dfs(target)
