@@ -24,28 +24,6 @@ class PolyTreeNode
         raise "this child does not exist" unless child_node.parent
         child_node.parent = nil
     end
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 3c1481f4fe00677ca2a09a32d8f88e2d637a71f1
-# end
-
-# class Searchable
-
-    # def dfs(target = nil)
-    #     return self if self == target
-    #     self.children.each do |child|
-    #         result = child.dfs(target= nil)
-    #         return result unless result.nil?
-    #     end
-    #     nil
-    # end
-<<<<<<< HEAD
->>>>>>> 3c1481f4fe00677ca2a09a32d8f88e2d637a71f1
-=======
->>>>>>> 3c1481f4fe00677ca2a09a32d8f88e2d637a71f1
-
     def dfs(target)
         return self if @value == target
 
