@@ -44,10 +44,10 @@ def exp(b,n)
     end
 end
 
- p exp(2,3)
- p exp(2,4)
-p exp(2, -4)
-p exp(2,-3)
+#  p exp(2,3)
+#  p exp(2,4)
+# p exp(2, -4)
+# p exp(2,-3)
 
 # class Array
 #     def deep_dup

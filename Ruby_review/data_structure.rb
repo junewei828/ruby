@@ -50,6 +50,7 @@ class Map
             arr_map[idx][1] = value
         else
             @arr_map << [key,value]
+        end
     end
 
     def get(key)
